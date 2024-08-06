@@ -18,33 +18,53 @@ import WorkSliderBtns from '@/components/Worksliderbtns';
 const projects = [
   {
     num: '01',
-    category: 'frontend',
+    category: 'Mobile',
     title: 'Project 1',
-    description: 'lorem abccccccccc',
-    stack: [{ name: 'Html 5' }, { name: 'Css 3' }, { name: 'JavaScript' }],
-    image: '/assets/work/thumb1.png',
-    live: '',
-    github: '',
+    description:
+      'Develop a social networking application for young people, allowing users to share images, videos, post interactions, private messages with message recall feature. The app uses React Native technology to ensure a smooth user experience on iOS and Android platforms',
+    stack: [
+      { name: 'React Native' },
+      { name: 'Django' },
+      { name: 'Postgre SQL' },
+    ],
+    image: '/assets/work/thumb2.png',
+    demo: 'https://www.youtube.com/watch?v=anR0_-icF2c',
+    github: 'https://github.com/hlhoangphucc/Tello-App-React',
   },
   {
     num: '02',
-    category: 'frontend',
-    title: 'Project 1',
-    description: 'lorem abccccccccc',
-    stack: [{ name: 'Html 5' }, { name: 'Css 3' }, { name: 'JavaScript' }],
-    image: '/assets/work/thumb1.png',
-    live: '',
-    github: '',
+    category: 'Mobile',
+    title: 'Project 2',
+    description:
+      'Develop a simple entertaining game based on the brick-laying mechanism. Players will try to arrange tiles to match the horizontal row to remove them and score points. Single-player mode records the highest scores, while multiplayer mode allows for direct competition and ranks players based on total scores',
+    stack: [{ name: 'Flutter' }, { name: 'Firebase' }],
+    image: '/assets/work/thumb3.png',
+    demo: 'https://www.youtube.com/watch?v=mZnjVzXTuSs',
+    github:
+      'https://github.com/hlhoangphucc/Game_tetris---App_chat/tree/Phuc/tetris_game',
   },
   {
     num: '03',
-    category: 'frontend',
-    title: 'Project 1',
-    description: 'lorem abccccccccc',
-    stack: [{ name: 'Html 5' }, { name: 'Css 3' }, { name: 'JavaScript' }],
+    category: 'IOT',
+    title: 'Project 3',
+    description:
+      'Develop an advanced smart home system, combining the comfort of a traditional home with intelligent remote control capabilities. The system includes smart automatic watering features, smart rain sensor, and security alarm system. Users can easily manage and control home appliances through an intuitive interface, providing a more comfortable and safer life.',
+    stack: [{ name: 'C/C++' }, { name: 'React Native' }, { name: 'MongoDB' }],
+    image: '/assets/work/thumb4.png',
+    demo: 'https://www.youtube.com/watch?v=7EtD1vGL58o',
+    github:
+      'https://github.com/hlhoangphucc/Smart-Home/blob/main/sketch_jul5c.ino',
+  },
+  {
+    num: '04',
+    category: 'fullstack',
+    title: 'Project 4',
+    description:
+      'Develop a comprehensive e-commerce platform, including a sales website with core features such as shopping cart, product detail view and ordering. At the same time, build a strong administration system to manage products, users and order status effectively. The project aims to provide a seamless shopping experience for customers and maximum support for business operations',
+    stack: [{ name: 'Asp.Net' }, { name: 'MS SQL Server' }],
     image: '/assets/work/thumb1.png',
-    live: '',
-    github: '',
+    demo: 'https://youtu.be/mO5RqjLdfj8',
+    github: 'https://github.com/hlhoangphucc/Sales-Manager/tree/Hoang-Phuc',
   },
 ];
 
@@ -92,15 +112,15 @@ const Page = () => {
               <div className='border border-white/20'></div>
               {/*  buttons */}
               <div className='flex items-center gap-4'>
-                {/* live */}
-                <Link href={project.live}>
+                {/* demo */}
+                <Link href={project.demo}>
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group'>
                         <BsArrowUpRight className='text-white text-3xl group-hover:text-accent' />
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>Live project</p>
+                        <p>Demo project</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>

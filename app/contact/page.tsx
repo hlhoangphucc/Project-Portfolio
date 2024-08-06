@@ -20,12 +20,12 @@ const info = [
   {
     icon: <FaPhoneAlt />,
     title: 'Phone',
-    description: '(+84 392 234 718)',
+    description: '(+84) 336 755 724',
   },
   {
     icon: <FaEnvelope />,
     title: 'Email',
-    description: 'yourmail@gmail.com',
+    description: 'hlhoangphucc@gmail.com',
   },
   {
     icon: <FaMapMarkedAlt />,
@@ -53,9 +53,8 @@ const Contact = () => {
             <form className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'>
               <h3 className='text-4xl text-accent'>Let&apos;s work together</h3>
               <p className='text-white/60'>
-                Include popular icons in your React projects easily with
-                react-icons which utilizes ES6 imports that allows you to
-                include only the icons that your project is using.
+                Create impressive user interfaces, providing great user
+                experiences. Cooperating with you is our pleasure.
               </p>
 
               <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
@@ -72,7 +71,7 @@ const Contact = () => {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value='est'>Web developer</SelectItem>
+                    <SelectItem value='est'>Web Developer</SelectItem>
                     <SelectItem value='cst'>UI/UX Design</SelectItem>
                     <SelectItem value='mst'>Mobile Developer</SelectItem>
                   </SelectGroup>

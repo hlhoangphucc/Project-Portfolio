@@ -1,12 +1,17 @@
 import Link from 'next/link';
 
-import { FaGithub, FaLinkedin, FaYoutube, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa';
 
 const socials = [
-  { icon: <FaGithub />, path: '' },
-  { icon: <FaLinkedin />, path: '' },
-  { icon: <FaYoutube />, path: '' },
-  { icon: <FaTwitter />, path: '' },
+  { icon: <FaGithub />, path: 'https://github.com/hlhoangphucc' },
+  {
+    icon: <FaLinkedin />,
+    path: 'https://www.linkedin.com/in/phuc-hoang-6a7619295/',
+  },
+  {
+    icon: <FaFacebook />,
+    path: 'https://www.facebook.com/profile.php?id=100028906190717&locale=vi_VN',
+  },
 ];
 
 const Socials = ({

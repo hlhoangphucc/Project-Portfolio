@@ -14,6 +14,10 @@ const stats = [
     num: 8,
     text: 'Technologies',
   },
+  {
+    num: 80,
+    text: 'Code commit',
+  },
 ];
 
 const Stats = () => {
