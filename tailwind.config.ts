@@ -79,7 +79,7 @@ const config: Config = {
   },
   plugins: [
     require('tailwindcss-animate'),
-    function ({ addUtilities }) {
+    function ({ addUtilities }: { addUtilities: any }) {
       const newUtilities = {
         '.text-stroke': {
           '-webkit-text-stroke': '2px white',

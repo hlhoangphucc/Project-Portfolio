@@ -9,7 +9,13 @@ const socials = [
   { icon: <FaTwitter />, path: '' },
 ];
 
-const Socials = ({ containerStyles, iconStyles }) => {
+const Socials = ({
+  containerStyles,
+  iconStyles,
+}: {
+  containerStyles: string;
+  iconStyles: string;
+}) => {
   return (
     <div className={containerStyles}>
       {socials.map((item, index) => {
