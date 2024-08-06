@@ -27,7 +27,7 @@ const projects = [
       { name: 'Django' },
       { name: 'Postgre SQL' },
     ],
-    image: '/assets/work/thumb2.png',
+    image: '/assets/work/demoapp.png',
     demo: 'https://www.youtube.com/watch?v=anR0_-icF2c',
     github: 'https://github.com/hlhoangphucc/Tello-App-React',
   },
@@ -38,7 +38,7 @@ const projects = [
     description:
       'Develop a simple entertaining game based on the brick-laying mechanism. Players will try to arrange tiles to match the horizontal row to remove them and score points. Single-player mode records the highest scores, while multiplayer mode allows for direct competition and ranks players based on total scores',
     stack: [{ name: 'Flutter' }, { name: 'Firebase' }],
-    image: '/assets/work/thumb3.png',
+    image: '/assets/work/demogame.png',
     demo: 'https://www.youtube.com/watch?v=mZnjVzXTuSs',
     github:
       'https://github.com/hlhoangphucc/Game_tetris---App_chat/tree/Phuc/tetris_game',
@@ -50,7 +50,7 @@ const projects = [
     description:
       'Develop an advanced smart home system, combining the comfort of a traditional home with intelligent remote control capabilities. The system includes smart automatic watering features, smart rain sensor, and security alarm system. Users can easily manage and control home appliances through an intuitive interface, providing a more comfortable and safer life.',
     stack: [{ name: 'C/C++' }, { name: 'React Native' }, { name: 'MongoDB' }],
-    image: '/assets/work/Thumb4.png',
+    image: '/assets/work/demoiot.png',
     demo: 'https://www.youtube.com/watch?v=7EtD1vGL58o',
     github:
       'https://github.com/hlhoangphucc/Smart-Home/blob/main/sketch_jul5c.ino',
@@ -62,7 +62,7 @@ const projects = [
     description:
       'Develop a comprehensive e-commerce platform, including a sales website with core features such as shopping cart, product detail view and ordering. At the same time, build a strong administration system to manage products, users and order status effectively. The project aims to provide a seamless shopping experience for customers and maximum support for business operations',
     stack: [{ name: 'Asp.Net' }, { name: 'MS SQL Server' }],
-    image: '/assets/work/thumb1.png',
+    image: '/assets/work/demoweb.png',
     demo: 'https://youtu.be/mO5RqjLdfj8',
     github: 'https://github.com/hlhoangphucc/Sales-Manager/tree/Hoang-Phuc',
   },
