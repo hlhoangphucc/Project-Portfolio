@@ -27,7 +27,7 @@ const projects = [
       { name: 'Django' },
       { name: 'Postgre SQL' },
     ],
-    image: '/assets/work/Thumb2.png',
+    image: '/assets/work/thumb2.png',
     demo: 'https://www.youtube.com/watch?v=anR0_-icF2c',
     github: 'https://github.com/hlhoangphucc/Tello-App-React',
   },
@@ -38,7 +38,7 @@ const projects = [
     description:
       'Develop a simple entertaining game based on the brick-laying mechanism. Players will try to arrange tiles to match the horizontal row to remove them and score points. Single-player mode records the highest scores, while multiplayer mode allows for direct competition and ranks players based on total scores',
     stack: [{ name: 'Flutter' }, { name: 'Firebase' }],
-    image: '/assets/work/Thumb3.png',
+    image: '/assets/work/thumb3.png',
     demo: 'https://www.youtube.com/watch?v=mZnjVzXTuSs',
     github:
       'https://github.com/hlhoangphucc/Game_tetris---App_chat/tree/Phuc/tetris_game',
@@ -62,7 +62,7 @@ const projects = [
     description:
       'Develop a comprehensive e-commerce platform, including a sales website with core features such as shopping cart, product detail view and ordering. At the same time, build a strong administration system to manage products, users and order status effectively. The project aims to provide a seamless shopping experience for customers and maximum support for business operations',
     stack: [{ name: 'Asp.Net' }, { name: 'MS SQL Server' }],
-    image: '/assets/work/Thumb1.png',
+    image: '/assets/work/thumb1.png',
     demo: 'https://youtu.be/mO5RqjLdfj8',
     github: 'https://github.com/hlhoangphucc/Sales-Manager/tree/Hoang-Phuc',
   },
