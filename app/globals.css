@@ -59,9 +59,13 @@
     --chart-5: 340 75% 55%;
   }
 }
+.small-text {
+  font-size: 0.8em;
+}
 /* body {
   font-family: var(--font-jetbrainsMono);
 } */
+
 @layer base {
   * {
     @apply border-border;

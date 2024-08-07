@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import axios from 'axios';
 
 import {
   Select,
@@ -35,8 +36,61 @@ const info = [
 ];
 
 import { motion } from 'framer-motion';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
-const Contact = () => {
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: '',
+  });
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSelectChange = (value: string) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      service: value,
+    }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      await axios.post(
+        'https://script.google.com/macros/s/AKfycbxGimYFtcwd1bXnV3ny9Zb6q1b49mUWei4fF4QAI4U/dev',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      alert('Message sent successfully');
+    } catch (error: any) {
+      if (axios.isAxiosError(error)) {
+        console.error(
+          'Error sending message:',
+          error.response ? error.response.data : error.message
+        );
+      } else {
+        console.error('Unexpected error:', error);
+      }
+      alert('Failed to send message');
+    }
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -50,7 +104,10 @@ const Contact = () => {
         <div className='flex flex-col xl:flex-row gap[30px]'>
           {/* form */}
           <div className='xl:w-[54%] order-2 xl:order-none'>
-            <form className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'>
+            <form
+              onSubmit={handleSubmit}
+              className='flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl'
+            >
               <h3 className='text-4xl text-accent'>Let&apos;s work together</h3>
               <p className='text-white/60'>
                 Create impressive user interfaces, providing great user
@@ -58,32 +115,56 @@ const Contact = () => {
               </p>
 
               <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-                <Input type='firstname' placeholder='Firstname' />
-                <Input type='lastname' placeholder='Lastname' />
-                <Input type='email' placeholder='Email address' />
-                <Input type='phone' placeholder='Phone number' />
+                <Input
+                  type='text'
+                  name='firstname'
+                  placeholder='Firstname'
+                  onChange={handleChange}
+                />
+                <Input
+                  type='text'
+                  name='lastname'
+                  placeholder='Lastname'
+                  onChange={handleChange}
+                />
+                <Input
+                  type='email'
+                  name='email'
+                  placeholder='Email address'
+                  onChange={handleChange}
+                />
+                <Input
+                  type='text'
+                  name='phone'
+                  placeholder='Phone number'
+                  onChange={handleChange}
+                />
               </div>
 
-              <Select>
+              <Select name='service' onValueChange={handleSelectChange}>
                 <SelectTrigger className='w-full'>
                   <SelectValue placeholder='Select a service' />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value='est'>Web Developer</SelectItem>
-                    <SelectItem value='cst'>UI/UX Design</SelectItem>
-                    <SelectItem value='mst'>Mobile Developer</SelectItem>
+                    <SelectItem value='Web Developer'>Web Developer</SelectItem>
+                    <SelectItem value='UI/UX Design'>UI/UX Design</SelectItem>
+                    <SelectItem value='Mobile Developer'>
+                      Mobile Developer
+                    </SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
 
               <Textarea
+                name='message'
                 className='h-[200px]'
                 placeholder='Type your message here'
+                onChange={handleChange}
               />
 
-              <Button size='md' className='max-w-40'>
+              <Button type='submit' size='md' className='max-w-40'>
                 Send message
               </Button>
             </form>
