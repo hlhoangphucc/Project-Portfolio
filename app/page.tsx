@@ -83,7 +83,10 @@ const Home = () => {
               Firebase.
             </p>
             <div className='flex flex-col xl:flex-row items-center gap-8'>
-              <a href='/assets/cv.pdf' download='CV_HUYNH_LE_HOANG_PHUC.pdf'>
+              <a
+                href='/assets/Resume.pdf'
+                download='CV_HUYNH_LE_HOANG_PHUC.pdf'
+              >
                 <Button
                   variant='outline'
                   size='lg'
