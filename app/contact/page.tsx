@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import axios from 'axios';
-
 import {
   Select,
   SelectContent,
@@ -14,8 +13,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-
 import { FaPhoneAlt, FaEnvelope, FaMapMarkedAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 const info = [
   {
@@ -35,9 +35,6 @@ const info = [
   },
 ];
 
-import { motion } from 'framer-motion';
-import { ChangeEvent, FormEvent, useState } from 'react';
-
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     firstname: '',
@@ -47,6 +44,9 @@ const Contact: React.FC = () => {
     service: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -67,9 +67,10 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
-      await axios.post(
-        'https://script.google.com/macros/s/AKfycbxGimYFtcwd1bXnV3ny9Zb6q1b49mUWei4fF4QAI4U/dev',
+      const response = await axios.post(
+        'https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbxBfvTNDFkZOCx4foE1T7Jp4nQ0YCDmzxb_SsXAJC4OBHiHZ2PPPJqxEzAUUuhnBDLrIg/exec',
         formData,
         {
           headers: {
@@ -77,18 +78,25 @@ const Contact: React.FC = () => {
           },
         }
       );
-      alert('Message sent successfully');
+      if (response.status === 200) {
+        setModalMessage('Sent successfully');
+      } else {
+        setModalMessage('Failed to send message');
+      }
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
-        console.error(
-          'Error sending message:',
-          error.response ? error.response.data : error.message
-        );
+        setModalMessage(error.response ? error.response.data : error.message);
       } else {
-        console.error('Unexpected error:', error);
+        setModalMessage('Unexpected error occurred');
       }
-      alert('Failed to send message');
+    } finally {
+      setIsSubmitting(false);
+      setIsModalOpen(true);
     }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -102,7 +110,6 @@ const Contact: React.FC = () => {
     >
       <div className='container mx-auto'>
         <div className='flex flex-col xl:flex-row gap[30px]'>
-          {/* form */}
           <div className='xl:w-[54%] order-2 xl:order-none'>
             <form
               onSubmit={handleSubmit}
@@ -120,28 +127,36 @@ const Contact: React.FC = () => {
                   name='firstname'
                   placeholder='Firstname'
                   onChange={handleChange}
+                  required
                 />
                 <Input
                   type='text'
                   name='lastname'
                   placeholder='Lastname'
                   onChange={handleChange}
+                  required
                 />
                 <Input
                   type='email'
                   name='email'
                   placeholder='Email address'
                   onChange={handleChange}
+                  required
                 />
                 <Input
                   type='text'
                   name='phone'
                   placeholder='Phone number'
                   onChange={handleChange}
+                  required
                 />
               </div>
 
-              <Select name='service' onValueChange={handleSelectChange}>
+              <Select
+                name='service'
+                onValueChange={handleSelectChange}
+                required
+              >
                 <SelectTrigger className='w-full'>
                   <SelectValue placeholder='Select a service' />
                 </SelectTrigger>
@@ -162,14 +177,19 @@ const Contact: React.FC = () => {
                 className='h-[200px]'
                 placeholder='Type your message here'
                 onChange={handleChange}
+                required
               />
 
-              <Button type='submit' size='md' className='max-w-40'>
-                Send message
+              <Button
+                type='submit'
+                size='md'
+                className='max-w-40'
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Send message'}
               </Button>
             </form>
           </div>
-          {/* info */}
           <div className='flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0'>
             <ul className='flex flex-col gap-10'>
               {info.map((item, index) => {
@@ -189,6 +209,40 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 '>
+          <div className='bg-primary p-8 rounded-xl relative'>
+            <button
+              onClick={closeModal}
+              className='absolute top-2 right-2 bg-green-500 rounded-full w-8 h-8 flex items-center justify-center text-black'
+            >
+              x
+            </button>
+            <h2 className='text-2xl mb-4 text-accent'>{modalMessage}</h2>
+            <div className='bg-white/80 text-black p-4 border border-white rounded-md max-w-lg break-words'>
+              <p className='text-left'>
+                <span>
+                  Dear{' '}
+                  <span className='capitalize inline'>{formData.lastname}</span>
+                  ,
+                </span>
+                <br />
+                Thank you very much for taking the time to contact us. Your
+                interest is a great honor for us. <br />
+                We have received your information and would like to assure you
+                that your request will be carefully and thoroughly considered.
+                We will respond as soon as possible. Once again, thank you very
+                much for your trust and choosing our services. We look forward
+                to cooperating and serving you in the future. <br /> Wishing you
+                a good day and success.
+                <br />
+                Best regards,
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </motion.section>
   );
 };
