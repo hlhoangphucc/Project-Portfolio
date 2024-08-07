@@ -8,10 +8,6 @@ const socials = [
     icon: <FaLinkedin />,
     path: 'https://www.linkedin.com/in/phuc-hoang-6a7619295/',
   },
-  {
-    icon: <FaFacebook />,
-    path: 'https://www.facebook.com/profile.php?id=100028906190717&locale=vi_VN',
-  },
 ];
 
 const Socials = ({
